@@ -1,8 +1,8 @@
 import Head from "next/head"
 import useUsers from "@hooks/useUsers"
 import { Container } from "@mui/system"
-import { enums } from "@/constans/enums"
-import CardComponent from "@/components/CardComponent"
+import { enums } from "@constants/enums"
+import CardComponent from "@components/CardComponent"
 
 const containerStyles = {
   display: "grid",

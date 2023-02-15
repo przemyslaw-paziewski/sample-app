@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { Card, CardContent, Typography } from "@mui/material"
 import { type User } from "@/interfaces/User"
-import { enums } from "@/constans/enums"
+import { enums } from "@constants/enums"
 
 export default function CardComponent({
   id,
