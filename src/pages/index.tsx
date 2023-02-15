@@ -1,8 +1,8 @@
 import Head from "next/head"
 import useUsers from "@hooks/useUsers"
 import { Container } from "@mui/system"
-import { Card, CardContent, Typography } from "@mui/material"
-import Link from "next/link"
+import { enums } from "@/constans/enums"
+import CardComponent from "@/components/CardComponent"
 
 const containerStyles = {
   display: "grid",
@@ -28,8 +28,8 @@ export default function Home(): JSX.Element {
   return (
     <>
       <Head>
-        <title>Sample app</title>
-        <meta name="description" content="Sample app" />
+        <title>{enums.PAGE_TITLE}</title>
+        <meta name="description" content={enums.PAGE_TITLE} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <main>
@@ -37,36 +37,15 @@ export default function Home(): JSX.Element {
           {data
             ?.slice(0, 8)
             .map(({ id, name, username, phone, website, company }) => (
-              <Link
-                href={`/users/${id }`}
+              <CardComponent
+                id={id}
+                name={name}
+                username={username}
+                phone={phone}
+                website={website}
+                company={company}
                 key={id}
-                style={{ textDecoration: "none" }}
-              >
-                <Card>
-                  <CardContent>
-                    <Typography sx={{ fontSize: 20 }} gutterBottom>
-                      {name}
-                    </Typography>
-                    <Typography
-                      sx={{
-                        fontSize: 15,
-                        display: "flex",
-                        flexDirection: "column",
-                        gap: "15px",
-                      }}
-                      gutterBottom
-                    >
-                      <span>{username}</span>
-                      <span>{phone}</span>
-                      <span>{website}</span>
-                      <Typography sx={{ fontSize: 20 }}>Company:</Typography>
-                      <span>{company.name}</span>
-                      <span>{company.catchPhrase}</span>
-                      <span>{company.bs}</span>
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Link>
+              />
             ))}
         </Container>
       </main>
