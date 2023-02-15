@@ -1,4 +1,4 @@
-import { type User } from "@/interfaces/User"
+import { type User } from "@/interfaces/interfaces"
 import axios from "@utils/axiosInstance"
 import { useQuery, type UseQueryResult } from "react-query"
 

@@ -10,3 +10,9 @@ export interface User {
     bs: string
   }
 }
+
+export interface PageWrapperProps {
+  metaTitle: string
+  metaDescription: string
+  children: JSX.Element
+}

@@ -1,7 +1,8 @@
 import Link from "next/link"
 import { Card, CardContent, Typography } from "@mui/material"
-import { type User } from "@/interfaces/User"
+import { type User } from "@/interfaces/interfaces"
 import { enums } from "@constants/enums"
+import { links } from "@/constants/links"
 
 export default function CardComponent({
   id,
@@ -27,7 +28,11 @@ export default function CardComponent({
   }
 
   return (
-    <Link href={`/users/${id}`} key={id} style={{ textDecoration: "none" }}>
+    <Link
+      href={`${links.USER_PAGE}/${id}`}
+      key={id}
+      style={{ textDecoration: "none" }}
+    >
       <Card sx={cardStyles}>
         <CardContent>
           <Typography sx={{ fontSize: 20 }} gutterBottom>
