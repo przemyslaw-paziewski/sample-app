@@ -3,6 +3,7 @@ import { ReactQueryDevtools } from "react-query/devtools"
 import { Hydrate, QueryClient, QueryClientProvider } from "react-query"
 import { CssBaseline } from "@mui/material"
 import { useState } from "react"
+import { ModalContextProvider } from "@/context/modalContext"
 
 export default function App({ Component, pageProps }: AppProps): JSX.Element {
   const [queryClient] = useState(
@@ -16,10 +17,12 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
     <>
       <QueryClientProvider client={queryClient}>
         <Hydrate state={pageProps.dehydratedState}>
-          <CssBaseline>
-            <Component {...pageProps} />
-          </CssBaseline>
-          <ReactQueryDevtools initialIsOpen={false} />
+          <ModalContextProvider>
+            <CssBaseline>
+              <Component {...pageProps} />
+            </CssBaseline>
+            <ReactQueryDevtools initialIsOpen={false} />
+          </ModalContextProvider>
         </Hydrate>
       </QueryClientProvider>
     </>

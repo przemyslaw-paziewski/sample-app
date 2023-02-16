@@ -1,3 +1,5 @@
+import { type Dispatch, type SetStateAction } from "react"
+
 export interface User {
   id: number
   name: string
@@ -21,4 +23,18 @@ export interface SimpleDialogProps {
   open: boolean
   selectedValue: string
   onClose: (value: string) => void
+}
+
+export interface ModalDefaultProps {
+  modal: {
+    isOpen: boolean
+    content: JSX.Element | undefined
+  }
+  setModal: Dispatch<
+    SetStateAction<{
+      isOpen: boolean
+      content: JSX.Element | undefined
+    }>
+  >
+  handleOpen: () => void
 }
