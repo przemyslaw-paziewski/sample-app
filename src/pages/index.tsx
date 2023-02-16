@@ -4,7 +4,7 @@ import CardComponent from "@components/CardComponent"
 import { Skeleton } from "@mui/material"
 import PageWrapper from "@/components/PageWrapper"
 import { containerStyles } from "@/styles/styles"
-import { arrayHelper, fetchUsers } from "@/utils/usersUtils"
+import { arrayHelper, fetchUsers } from "@/utils/utils"
 import { useQuery } from "react-query"
 
 export default function Home(): JSX.Element {

@@ -1,5 +1,5 @@
 import { cardStyles, postsListStyle, titleTrimStyles } from "@/styles/styles"
-import { arrayHelper, fetchUsersPosts } from "@/utils/usersUtils"
+import { arrayHelper, fetchUsersPosts } from "@/utils/utils"
 import { Button, Card, CardContent, Skeleton, Typography } from "@mui/material"
 import { Container } from "@mui/system"
 import Link from "next/link"
@@ -25,12 +25,12 @@ export default function PostsList({ id }: { id: string }): JSX.Element {
               key={el}
             />
           ))
-        : usersPosts?.map(({ id, title }) => (
-            <Link key={id} href="" style={{ textDecoration: "none" }}>
+        : usersPosts?.map(({ id: postId, title }) => (
+            <Link key={postId} href="" style={{ textDecoration: "none" }}>
               <Card sx={{ ...cardStyles, width: "100%" }}>
                 <CardContent sx={{ display: "flex", justifyContent: "center" }}>
                   <Button
-                    onClick={handleDelete}
+                    onClick={handleDelete(postId.toString())}
                     variant="contained"
                     sx={{ marginRight: "auto" }}
                   >

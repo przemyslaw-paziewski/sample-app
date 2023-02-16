@@ -1,7 +1,7 @@
 import { type Posts, type User } from "@/interfaces/interfaces"
 import axios from "@utils/axiosInstance"
 
-export async function fetchUsers(): Promise<User[]> {
+export const fetchUsers = async (): Promise<User[]> => {
   const res = await axios({
     method: "get",
     url: "users",
@@ -9,7 +9,7 @@ export async function fetchUsers(): Promise<User[]> {
   return res.data
 }
 
-export async function fetchSingleUser(id: string): Promise<User> {
+export const fetchSingleUser = async (id: string): Promise<User> => {
   const res = await axios({
     method: "get",
     url: `users/${id}`,
@@ -17,7 +17,7 @@ export async function fetchSingleUser(id: string): Promise<User> {
   return res.data
 }
 
-export async function fetchUsersPosts(id: string): Promise<Posts[]> {
+export const fetchUsersPosts = async (id: string): Promise<Posts[]> => {
   const res = await axios({
     method: "get",
     url: `users/${id}/posts`,
@@ -26,3 +26,14 @@ export async function fetchUsersPosts(id: string): Promise<Posts[]> {
 }
 
 export const arrayHelper = Array.from(Array(8).keys())
+
+export const deletePost = async (postId: string): Promise<void> => {
+  const res = await axios({
+    method: "delete",
+    url: `posts/${postId}`,
+  })
+
+  if (res.status !== 200) {
+    throw new Error()
+  }
+}

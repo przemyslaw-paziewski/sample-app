@@ -9,7 +9,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material"
-import { fetchSingleUser, fetchUsers } from "@utils/usersUtils"
+import { fetchSingleUser, fetchUsers } from "@utils/utils"
 import { type GetStaticPaths, type GetStaticProps } from "next"
 import { dehydrate, QueryClient, useQuery } from "react-query"
 import ArrowBackIcon from "@mui/icons-material/ArrowBack"
