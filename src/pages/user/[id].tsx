@@ -26,7 +26,7 @@ export default function UserDetails({ id }: { id: string }): JSX.Element {
       metaDescription={enums.USER_PAGE_DESCRIPTION}
     >
       <Container maxWidth="xl" sx={topContainerStyles}>
-        <Link href={links.HOME}>
+        <Link href={links.HOME} style={{ color: "#1976d2" }}>
           <ArrowBackIcon fontSize="large" />
         </Link>
         <Typography variant="h2" align="center">
