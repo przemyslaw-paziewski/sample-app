@@ -1,18 +1,26 @@
 import type { AppProps } from "next/app"
 import { ReactQueryDevtools } from "react-query/devtools"
-import { QueryClient, QueryClientProvider } from "react-query"
+import { Hydrate, QueryClient, QueryClientProvider } from "react-query"
 import { CssBaseline } from "@mui/material"
-
-const queryClient = new QueryClient()
+import { useState } from "react"
 
 export default function App({ Component, pageProps }: AppProps): JSX.Element {
+  const [queryClient] = useState(
+    () =>
+      new QueryClient({
+        defaultOptions: { queries: { refetchOnWindowFocus: false } },
+      })
+  )
+
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <CssBaseline>
-          <Component {...pageProps} />
-        </CssBaseline>
-        <ReactQueryDevtools initialIsOpen={false} />
+        <Hydrate state={pageProps.dehydratedState}>
+          <CssBaseline>
+            <Component {...pageProps} />
+          </CssBaseline>
+          <ReactQueryDevtools initialIsOpen={false} />
+        </Hydrate>
       </QueryClientProvider>
     </>
   )

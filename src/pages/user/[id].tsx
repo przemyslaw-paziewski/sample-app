@@ -7,7 +7,7 @@ import { dehydrate, QueryClient } from "react-query"
 
 export default function UserDetails({ id }: { id: string }): JSX.Element {
   const { singleUserData } = useSingleUser(id)
-  console.log(singleUserData)
+
   return (
     <PageWrapper
       metaTitle={`${enums.USER_PAGE_TITLE} ${singleUserData?.name as string}`}
@@ -41,7 +41,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
     queryKey: ["singleUser", id],
     queryFn: async () => await fetchSingleUser(id as string),
   })
-  console.log("test")
 
   return {
     props: {
