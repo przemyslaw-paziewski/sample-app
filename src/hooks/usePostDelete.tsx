@@ -1,16 +1,9 @@
 import { type BaseSyntheticEvent } from 'react'
 import { useMutation, useQueryClient } from 'react-query'
 import { useModal } from '@context/modalContext'
-import PageTexts from '@enums/pageTexts'
 import { type Posts } from '@interfaces/interfaces'
-import {
-  Button,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-} from '@mui/material'
 import { deletePost } from '@utils/utils'
+import RemoveConfirm from '@/components/RemoveConfirm'
 
 export const usePostDelete = (
   userId: string
@@ -66,6 +59,11 @@ export const usePostDelete = (
     }
   )
 
+  const handleSubmit = (postId: string): void => {
+    removePostMutation.mutate(postId)
+    handleClose()
+  }
+
   const handleDelete =
     (postId: string) =>
     (event: Event | BaseSyntheticEvent): void => {
@@ -74,26 +72,11 @@ export const usePostDelete = (
       setModal({
         isOpen: true,
         content: (
-          <>
-            <DialogTitle>{PageTexts.REMOVE_MODAL_TITLE}</DialogTitle>
-            <DialogContent>
-              <DialogContentText>
-                {PageTexts.REMOVE_MODAL_TEXT}
-              </DialogContentText>
-            </DialogContent>
-            <DialogActions>
-              <Button onClick={handleClose}>{PageTexts.CANCEL}</Button>
-              <Button
-                onClick={() => {
-                  removePostMutation.mutate(postId)
-                  handleClose()
-                }}
-                variant="contained"
-              >
-                {PageTexts.REMOVE}
-              </Button>
-            </DialogActions>
-          </>
+          <RemoveConfirm
+            handleSubmit={() => {
+              handleSubmit(postId)
+            }}
+          />
         ),
       })
     }
