@@ -57,3 +57,11 @@ export const createPost = async (
     throw new Error()
   }
 }
+
+export const fetchSinglePost = async (id: string): Promise<Posts> => {
+  const res = await axios({
+    method: "get",
+    url: `posts/${id}`,
+  })
+  return res.data
+}

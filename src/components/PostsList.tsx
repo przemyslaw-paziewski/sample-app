@@ -6,6 +6,7 @@ import Link from "next/link"
 import { useQuery } from "react-query"
 import DeleteIcon from "@mui/icons-material/Delete"
 import { usePostDelete } from "@/hooks/usePostDelete"
+import { links } from "@/constants/links"
 
 export default function PostsList({ id }: { id: string }): JSX.Element {
   const { data: usersPosts, isLoading: isFetchingPosts } = useQuery({
@@ -26,7 +27,11 @@ export default function PostsList({ id }: { id: string }): JSX.Element {
             />
           ))
         : usersPosts?.map(({ id: postId, title }) => (
-            <Link key={postId} href="" style={{ textDecoration: "none" }}>
+            <Link
+              key={postId}
+              href={`/${links.USER_PAGE}/${id}/${postId}`}
+              style={{ textDecoration: "none" }}
+            >
               <Card sx={{ ...cardStyles, width: "100%" }}>
                 <CardContent sx={{ display: "flex", justifyContent: "center" }}>
                   <Button

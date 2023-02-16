@@ -12,7 +12,7 @@ import { topContainerStyles } from "@/styles/styles"
 import PostsList from "@/components/PostsList"
 import { usePostCreate } from "@/hooks/usePostCreate"
 
-export default function UserDetails({ id }: { id: string }): JSX.Element {
+export default function UserDetailed({ id }: { id: string }): JSX.Element {
   const { handlePostCreate } = usePostCreate(id)
 
   const { data: singleUserData } = useQuery({
