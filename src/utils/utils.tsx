@@ -25,7 +25,7 @@ export const fetchUsersPosts = async (id: string): Promise<Posts[]> => {
   return res.data
 }
 
-export const arrayHelper = Array.from(Array(8).keys())
+export const skeletonsMockArray = Array.from(Array(8).keys())
 
 export const deletePost = async (postId: string): Promise<void> => {
   const res = await axios({

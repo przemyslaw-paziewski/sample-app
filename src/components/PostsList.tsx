@@ -5,7 +5,7 @@ import DeleteIcon from '@mui/icons-material/Delete'
 import { Button, Card, CardContent, Skeleton, Typography } from '@mui/material'
 import { Container } from '@mui/system'
 import { cardStyles, postsListStyle, titleTrimStyles } from '@styles/styles'
-import { arrayHelper, fetchUsersPosts } from '@utils/utils'
+import { skeletonsMockArray, fetchUsersPosts } from '@utils/utils'
 import Link from 'next/link'
 
 export default function PostsList({ id }: { id: string }): JSX.Element {
@@ -18,7 +18,7 @@ export default function PostsList({ id }: { id: string }): JSX.Element {
   return (
     <Container maxWidth="xl" sx={postsListStyle}>
       {isFetchingPosts
-        ? arrayHelper.map((el) => (
+        ? skeletonsMockArray.map((el) => (
             <Skeleton
               variant="rectangular"
               width={'100'}

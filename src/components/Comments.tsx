@@ -3,7 +3,7 @@ import { useQuery } from 'react-query'
 import PageTexts from '@enums/pageTexts'
 import { Button, Card, CardContent, Skeleton, Typography } from '@mui/material'
 import { Box } from '@mui/system'
-import { arrayHelper, fetchComments } from '@utils/utils'
+import { skeletonsMockArray, fetchComments } from '@utils/utils'
 
 export const Comments = ({ postId }: { postId: string }): JSX.Element => {
   const { data: comments, isLoading: isFetchingComments } = useQuery({
@@ -22,7 +22,7 @@ export const Comments = ({ postId }: { postId: string }): JSX.Element => {
       </Button>
       {areCommentsToggled &&
         (isFetchingComments
-          ? arrayHelper.map((el) => (
+          ? skeletonsMockArray.map((el) => (
               <Skeleton
                 variant="rectangular"
                 width={'100'}

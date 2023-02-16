@@ -5,7 +5,7 @@ import PageTexts from '@enums/pageTexts'
 import { Skeleton } from '@mui/material'
 import { Container } from '@mui/system'
 import { containerStyles } from '@styles/styles'
-import { arrayHelper, fetchUsers } from '@utils/utils'
+import { skeletonsMockArray, fetchUsers } from '@utils/utils'
 
 export default function Home(): JSX.Element {
   const { data: usersData, isLoading: isFetchingUsers } = useQuery({
@@ -20,7 +20,7 @@ export default function Home(): JSX.Element {
     >
       <Container sx={containerStyles} maxWidth="xl">
         {isFetchingUsers
-          ? arrayHelper.map((el) => (
+          ? skeletonsMockArray.map((el) => (
               <Skeleton
                 variant="rectangular"
                 width={'100%'}
