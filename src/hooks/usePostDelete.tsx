@@ -30,8 +30,7 @@ export const usePostDelete = (
           "usersPosts",
           userId,
         ])
-        if (previousPosts != null) {
-          console.log("test")
+        if (previousPosts != null && previousPosts.length > 0) {
           const filteredPosts = [...previousPosts].filter(
             (el) => el.id.toString() !== postId
           )
@@ -45,7 +44,10 @@ export const usePostDelete = (
       },
 
       onError: (_err, variables, context) => {
-        if (context?.previousPosts != null) {
+        if (
+          context?.previousPosts != null &&
+          context?.previousPosts.length > 0
+        ) {
           queryClient.setQueryData<Posts[]>(
             ["usersPosts", userId],
             context.previousPosts
