@@ -1,14 +1,6 @@
 import PageWrapper from "@components/PageWrapper"
 import { enums } from "@constants/enums"
-import {
-  Button,
-  Container,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  TextField,
-  Typography,
-} from "@mui/material"
+import { Button, Container, Typography } from "@mui/material"
 import { fetchSingleUser, fetchUsers } from "@utils/utils"
 import { type GetStaticPaths, type GetStaticProps } from "next"
 import { dehydrate, QueryClient, useQuery } from "react-query"
@@ -17,52 +9,16 @@ import Link from "next/link"
 import { links } from "@constants/links"
 import AddIcon from "@mui/icons-material/Add"
 import { topContainerStyles } from "@/styles/styles"
-import { useModal } from "@/context/modalContext"
 import PostsList from "@/components/PostsList"
+import { usePostCreate } from "@/hooks/usePostCreate"
 
 export default function UserDetails({ id }: { id: string }): JSX.Element {
-  const { setModal, handleClose } = useModal()
+  const { handlePostCreate } = usePostCreate(id)
 
   const { data: singleUserData } = useQuery({
     queryKey: ["singleUser", id],
     queryFn: async () => await fetchSingleUser(id),
   })
-
-  const handlePostAdd = (): void => {
-    setModal({
-      isOpen: true,
-      content: (
-        <>
-          <DialogTitle>Add new post</DialogTitle>
-          <DialogContent>
-            <TextField
-              autoFocus
-              margin="dense"
-              id="title"
-              label="Title"
-              type="text"
-              fullWidth
-            />
-            <TextField
-              autoFocus
-              margin="dense"
-              id="content"
-              label="Content"
-              multiline
-              rows={4}
-              fullWidth
-            />
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={handleClose}>Cancel</Button>
-            <Button onClick={handleClose} variant="contained">
-              Add
-            </Button>
-          </DialogActions>
-        </>
-      ),
-    })
-  }
 
   return (
     <PageWrapper
@@ -76,7 +32,10 @@ export default function UserDetails({ id }: { id: string }): JSX.Element {
         <Typography variant="h2" align="center">
           {singleUserData?.name}
         </Typography>
-        <Button variant="contained" onClick={handlePostAdd}>
+        <Button
+          variant="contained"
+          onClick={handlePostCreate(["test", "test"])}
+        >
           <AddIcon fontSize="large" />
         </Button>
       </Container>

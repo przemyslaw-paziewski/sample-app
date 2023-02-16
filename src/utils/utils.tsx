@@ -37,3 +37,23 @@ export const deletePost = async (postId: string): Promise<void> => {
     throw new Error()
   }
 }
+
+export const createPost = async (
+  title: string,
+  content: string,
+  userId: number
+): Promise<void> => {
+  const res = await axios({
+    method: "post",
+    url: `posts`,
+    data: {
+      title,
+      content,
+      userId,
+    },
+  })
+
+  if (res.status !== 201) {
+    throw new Error()
+  }
+}
