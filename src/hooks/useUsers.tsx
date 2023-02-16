@@ -1,7 +1,18 @@
 import { type User } from "@/interfaces/interfaces"
 import { fetchUsers } from "@/utils/usersUtils"
-import { useQuery, type UseQueryResult } from "react-query"
+import { useQuery } from "react-query"
 
-export default function useUsers(): UseQueryResult<User[], Error> {
-  return useQuery("users", fetchUsers)
+export const useUsers = (): {
+  usersData: User[] | undefined
+  isFetchingUsers: boolean
+} => {
+  const { data: usersData, isLoading: isFetchingUsers } = useQuery({
+    queryKey: ["users"],
+    queryFn: async () => await fetchUsers(),
+  })
+
+  return {
+    usersData,
+    isFetchingUsers,
+  }
 }

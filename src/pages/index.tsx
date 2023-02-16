@@ -1,5 +1,5 @@
 import Head from "next/head"
-import useUsers from "@hooks/useUsers"
+import { useUsers } from "@hooks/useUsers"
 import { Container } from "@mui/system"
 import { enums } from "@constants/enums"
 import CardComponent from "@components/CardComponent"
@@ -25,7 +25,7 @@ const containerStyles = {
 const arrayHelper = Array.from(Array(8).keys())
 
 export default function Home(): JSX.Element {
-  const { data, isLoading } = useUsers()
+  const { usersData, isFetchingUsers } = useUsers()
 
   return (
     <>
@@ -36,7 +36,7 @@ export default function Home(): JSX.Element {
       </Head>
       <main>
         <Container sx={containerStyles} maxWidth="xl">
-          {isLoading
+          {isFetchingUsers
             ? arrayHelper.map((el) => (
                 <Skeleton
                   variant="rectangular"
@@ -45,7 +45,7 @@ export default function Home(): JSX.Element {
                   key={el}
                 />
               ))
-            : data
+            : usersData
                 ?.slice(0, 8)
                 .map(({ id, name, username, phone, website, company }) => (
                   <CardComponent
