@@ -32,10 +32,7 @@ export default function UserDetails({ id }: { id: string }): JSX.Element {
         <Typography variant="h2" align="center">
           {singleUserData?.name}
         </Typography>
-        <Button
-          variant="contained"
-          onClick={handlePostCreate(["test", "test"])}
-        >
+        <Button variant="contained" onClick={handlePostCreate}>
           <AddIcon fontSize="large" />
         </Button>
       </Container>

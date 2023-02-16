@@ -7,7 +7,6 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
-  FormControl,
   TextField,
 } from "@mui/material"
 import { type BaseSyntheticEvent } from "react"
@@ -16,9 +15,7 @@ import { useMutation, useQueryClient } from "react-query"
 export const usePostCreate = (
   userId: string
 ): {
-  handlePostCreate: ([title, content]: [string, string]) => (
-    event: Event | BaseSyntheticEvent
-  ) => void
+  handlePostCreate: (event: Event | BaseSyntheticEvent) => void
 } => {
   const { setModal, handleClose } = useModal()
   const queryClient = useQueryClient()
@@ -74,53 +71,53 @@ export const usePostCreate = (
     }
   )
 
-  const handlePostCreate =
-    ([title, content]: [string, string]) =>
-    (event: Event | BaseSyntheticEvent): void => {
-      event.preventDefault()
-      event.stopPropagation()
-      setModal({
-        isOpen: true,
-        content: (
-          <>
-            <DialogTitle>{enums.ADD_MODAL_TITLE}</DialogTitle>
-            <DialogContent sx={{ width: "500px" }}>
-              <FormControl fullWidth>
-                <TextField
-                  autoFocus
-                  margin="dense"
-                  id="title"
-                  label="Title"
-                  type="text"
-                  fullWidth
-                />
-                <TextField
-                  autoFocus
-                  margin="dense"
-                  id="content"
-                  label="Content"
-                  multiline
-                  rows={4}
-                  fullWidth
-                />
-              </FormControl>
-            </DialogContent>
-            <DialogActions>
-              <Button onClick={handleClose}>{enums.CANCEL}</Button>
-              <Button
-                onClick={() => {
-                  addPostMutation.mutate([title, content])
-                  handleClose()
-                }}
-                variant="contained"
-              >
-                {enums.ADD}
-              </Button>
-            </DialogActions>
-          </>
-        ),
-      })
-    }
+  const handleSubmit = (e: Event | BaseSyntheticEvent): void => {
+    e.preventDefault()
+    addPostMutation.mutate([e.target[0].value, e.target[1].value])
+    handleClose()
+  }
+
+  const handlePostCreate = (event: Event | BaseSyntheticEvent): void => {
+    event.preventDefault()
+    event.stopPropagation()
+    setModal({
+      isOpen: true,
+      content: (
+        <>
+          <DialogTitle>{enums.ADD_MODAL_TITLE}</DialogTitle>
+          <DialogContent sx={{ width: "500px" }}>
+            <form onSubmit={handleSubmit}>
+              <TextField
+                autoFocus
+                margin="dense"
+                id="title"
+                label="Title"
+                type="text"
+                fullWidth
+              />
+              <TextField
+                autoFocus
+                margin="dense"
+                id="content"
+                label="Content"
+                multiline
+                rows={4}
+                fullWidth
+              />
+              <DialogActions>
+                <Button onClick={handleClose} type="button">
+                  {enums.CANCEL}
+                </Button>
+                <Button type="submit" variant="contained">
+                  {enums.ADD}
+                </Button>
+              </DialogActions>
+            </form>
+          </DialogContent>
+        </>
+      ),
+    })
+  }
 
   return { handlePostCreate }
 }
