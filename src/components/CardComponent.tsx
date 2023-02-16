@@ -25,15 +25,15 @@ export default function CardComponent({
             {name}
           </Typography>
           <Typography sx={dataContainerStyles} gutterBottom>
-            <span>{username}</span>
-            <span>{phone}</span>
-            <span>{website}</span>
+            {[username, phone, website].map((el) => (
+              <span key={el}>{el}</span>
+            ))}
             <Typography sx={{ fontSize: 20 }} variant="body1" component="span">
               {PageTexts.COMPANY_DATA_TITLE}
             </Typography>
-            <span>{company.name}</span>
-            <span>{company.catchPhrase}</span>
-            <span>{company.bs}</span>
+            {Object.values(company).map((el) => (
+              <span key={el}>{el}</span>
+            ))}
           </Typography>
         </CardContent>
       </Card>
