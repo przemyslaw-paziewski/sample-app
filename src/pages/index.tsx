@@ -1,14 +1,18 @@
-import { useUsers } from "@hooks/useUsers"
 import { Container } from "@mui/system"
 import { enums } from "@constants/enums"
 import CardComponent from "@components/CardComponent"
 import { Skeleton } from "@mui/material"
 import PageWrapper from "@/components/PageWrapper"
 import { containerStyles } from "@/styles/styles"
+import { fetchUsers } from "@/utils/usersUtils"
+import { useQuery } from "react-query"
 const arrayHelper = Array.from(Array(8).keys())
 
 export default function Home(): JSX.Element {
-  const { usersData, isFetchingUsers } = useUsers()
+  const { data: usersData, isLoading: isFetchingUsers } = useQuery({
+    queryKey: ["users"],
+    queryFn: async () => await fetchUsers(),
+  })
 
   return (
     <PageWrapper
