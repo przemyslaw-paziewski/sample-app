@@ -33,7 +33,7 @@ export default function UserDetails({ id }: { id: string }): JSX.Element {
       isOpen: true,
       content: (
         <>
-          <DialogTitle id="edit-apartment">Add new post</DialogTitle>
+          <DialogTitle>Add new post</DialogTitle>
           <DialogContent>
             <TextField
               autoFocus

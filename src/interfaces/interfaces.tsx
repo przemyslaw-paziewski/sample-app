@@ -15,11 +15,6 @@ export interface PageWrapperProps {
   metaDescription: string
   children: JSX.Element[] | JSX.Element
 }
-export interface SimpleDialogProps {
-  open: boolean
-  selectedValue: string
-  onClose: (value: string) => void
-}
 export interface Posts {
   userId: number
   id: number

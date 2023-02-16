@@ -5,18 +5,14 @@ import { Container } from "@mui/system"
 import Link from "next/link"
 import { useQuery } from "react-query"
 import DeleteIcon from "@mui/icons-material/Delete"
-import { type BaseSyntheticEvent } from "react"
+import { usePostDelete } from "@/hooks/usePostDelete"
 
 export default function PostsList({ id }: { id: string }): JSX.Element {
   const { data: usersPosts, isLoading: isFetchingPosts } = useQuery({
     queryKey: ["usersPosts", id],
     queryFn: async () => await fetchUsersPosts(id),
   })
-
-  const handleDelete = (event: Event | BaseSyntheticEvent): void => {
-    event.preventDefault()
-    event.stopPropagation()
-  }
+  const { handleDelete } = usePostDelete()
 
   return (
     <Container maxWidth="xl" sx={postsListStyle}>

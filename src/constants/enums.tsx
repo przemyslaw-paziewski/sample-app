@@ -3,4 +3,9 @@ export const enums = Object.freeze({
   COMPANY_DATA_TITLE: "Company",
   USER_PAGE_TITLE: "User: ",
   USER_PAGE_DESCRIPTION: "",
+  REMOVE_MODAL_TITLE: "Remove post",
+  REMOVE_MODAL_TEXT: "Are you sure you want to delete this post?",
+  CANCEL: "Cancel",
+  REMOVE: "Remove",
+  ADD: "Add",
 })
