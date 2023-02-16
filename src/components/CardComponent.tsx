@@ -1,9 +1,9 @@
-import Links from '@enums/links'
-import PageTexts from '@enums/pageTexts'
-import { type User } from '@interfaces/interfaces'
-import { Card, CardContent, Typography } from '@mui/material'
-import { cardStyles, dataContainerStyles } from '@styles/styles'
 import Link from 'next/link'
+import { Card, CardContent, Typography } from '@mui/material'
+import Links from '@/enums/links'
+import PageTexts from '@/enums/pageTexts'
+import { type User } from '@/interfaces/interfaces'
+import { cardStyles, dataContainerStyles } from '@/styles/styles'
 
 export default function CardComponent({
   id,

@@ -1,9 +1,9 @@
 import { useReducer } from 'react'
 import { useQuery } from 'react-query'
-import PageTexts from '@enums/pageTexts'
 import { Button, Card, CardContent, Skeleton, Typography } from '@mui/material'
 import { Box } from '@mui/system'
-import { skeletonsMockArray, fetchComments } from '@utils/utils'
+import PageTexts from '@/enums/pageTexts'
+import { skeletonsMockArray, fetchComments } from '@/utils/utils'
 
 export const Comments = ({ postId }: { postId: string }): JSX.Element => {
   const { data: comments, isLoading: isFetchingComments } = useQuery({

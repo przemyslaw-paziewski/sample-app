@@ -1,4 +1,3 @@
-import PageTexts from '@enums/pageTexts'
 import {
   Button,
   DialogActions,
@@ -7,6 +6,7 @@ import {
   DialogTitle,
 } from '@mui/material'
 import { useModal } from '@/context/modalContext'
+import PageTexts from '@/enums/pageTexts'
 
 interface Props {
   handleSubmit: () => void

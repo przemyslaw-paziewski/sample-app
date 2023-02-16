@@ -1,9 +1,9 @@
 import { type BaseSyntheticEvent } from 'react'
 import { useMutation, useQueryClient } from 'react-query'
-import { useModal } from '@context/modalContext'
-import { type Posts } from '@interfaces/interfaces'
-import { createPost } from '@utils/utils'
 import NewPostForm from '@/components/NewPostForm'
+import { useModal } from '@/context/modalContext'
+import { type Posts } from '@/interfaces/interfaces'
+import { createPost } from '@/utils/utils'
 
 export const usePostCreate = (
   userId: string

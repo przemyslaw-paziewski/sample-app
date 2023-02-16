@@ -1,14 +1,14 @@
-import { dehydrate, QueryClient, useQuery } from 'react-query'
-import { Comments } from '@components/Comments'
-import PageWrapper from '@components/PageWrapper'
-import Links from '@enums/links'
-import PageTexts from '@enums/pageTexts'
-import ArrowBackIcon from '@mui/icons-material/ArrowBack'
-import { Container, Typography } from '@mui/material'
-import { postsListStyle } from '@styles/styles'
-import { fetchSinglePost, fetchSingleUser } from '@utils/utils'
 import { type GetServerSideProps } from 'next'
 import Link from 'next/link'
+import { dehydrate, QueryClient, useQuery } from 'react-query'
+import ArrowBackIcon from '@mui/icons-material/ArrowBack'
+import { Container, Typography } from '@mui/material'
+import { Comments } from '@/components/Comments'
+import PageWrapper from '@/components/PageWrapper'
+import Links from '@/enums/links'
+import PageTexts from '@/enums/pageTexts'
+import { postsListStyle } from '@/styles/styles'
+import { fetchSinglePost, fetchSingleUser } from '@/utils/utils'
 
 export default function PostDetailed({
   userId,

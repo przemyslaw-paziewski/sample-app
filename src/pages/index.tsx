@@ -1,11 +1,11 @@
 import { useQuery } from 'react-query'
-import CardComponent from '@components/CardComponent'
-import PageWrapper from '@components/PageWrapper'
-import PageTexts from '@enums/pageTexts'
 import { Skeleton } from '@mui/material'
 import { Container } from '@mui/system'
-import { containerStyles } from '@styles/styles'
-import { skeletonsMockArray, fetchUsers } from '@utils/utils'
+import CardComponent from '@/components/CardComponent'
+import PageWrapper from '@/components/PageWrapper'
+import PageTexts from '@/enums/pageTexts'
+import { containerStyles } from '@/styles/styles'
+import { skeletonsMockArray, fetchUsers } from '@/utils/utils'
 
 export default function Home(): JSX.Element {
   const { data: usersData, isLoading: isFetchingUsers } = useQuery({

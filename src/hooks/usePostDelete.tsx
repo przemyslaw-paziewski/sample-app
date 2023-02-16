@@ -1,9 +1,9 @@
 import { type BaseSyntheticEvent } from 'react'
 import { useMutation, useQueryClient } from 'react-query'
-import { useModal } from '@context/modalContext'
-import { type Posts } from '@interfaces/interfaces'
-import { deletePost } from '@utils/utils'
 import RemoveConfirm from '@/components/RemoveConfirm'
+import { useModal } from '@/context/modalContext'
+import { type Posts } from '@/interfaces/interfaces'
+import { deletePost } from '@/utils/utils'
 
 export const usePostDelete = (
   userId: string

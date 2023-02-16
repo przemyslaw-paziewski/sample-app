@@ -1,12 +1,12 @@
+import Link from 'next/link'
 import { useQuery } from 'react-query'
-import Links from '@enums/links'
-import { usePostDelete } from '@hooks/usePostDelete'
 import DeleteIcon from '@mui/icons-material/Delete'
 import { Button, Card, CardContent, Skeleton, Typography } from '@mui/material'
 import { Container } from '@mui/system'
-import { cardStyles, postsListStyle, titleTrimStyles } from '@styles/styles'
-import { skeletonsMockArray, fetchUsersPosts } from '@utils/utils'
-import Link from 'next/link'
+import Links from '@/enums/links'
+import { usePostDelete } from '@/hooks/usePostDelete'
+import { cardStyles, postsListStyle, titleTrimStyles } from '@/styles/styles'
+import { skeletonsMockArray, fetchUsersPosts } from '@/utils/utils'
 
 export default function PostsList({ id }: { id: string }): JSX.Element {
   const { data: usersPosts, isLoading: isFetchingPosts } = useQuery({

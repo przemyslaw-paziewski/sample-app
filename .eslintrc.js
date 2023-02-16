@@ -22,6 +22,8 @@ module.exports = {
       {
         alphabetize: { order: 'asc', caseInsensitive: true },
         pathGroups: [
+          { pattern: 'next*', group: 'builtin', position: 'before' },
+          { pattern: 'next/*', group: 'builtin', position: 'before' },
           { pattern: 'react*', group: 'builtin', position: 'before' },
           { pattern: '@/**', group: 'external', position: 'after' },
         ],

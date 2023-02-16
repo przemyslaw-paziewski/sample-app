@@ -1,5 +1,5 @@
-import axios from '@utils/axiosInstance'
 import { type Comment, type Posts, type User } from '@/interfaces/interfaces'
+import axios from '@/utils/axiosInstance'
 
 export const fetchUsers = async (): Promise<User[]> => {
   const res = await axios({

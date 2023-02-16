@@ -1,9 +1,9 @@
+import type { AppProps } from 'next/app'
 import { useState } from 'react'
 import { Hydrate, QueryClient, QueryClientProvider } from 'react-query'
-import { ModalContextProvider } from '@context/modalContext'
 import { CssBaseline } from '@mui/material'
-import type { AppProps } from 'next/app'
 import { ReactQueryDevtools } from 'react-query/devtools'
+import { ModalContextProvider } from '@/context/modalContext'
 
 export default function App({ Component, pageProps }: AppProps): JSX.Element {
   const [queryClient] = useState(
