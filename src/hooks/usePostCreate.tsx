@@ -1,16 +1,9 @@
 import { type BaseSyntheticEvent } from 'react'
 import { useMutation, useQueryClient } from 'react-query'
 import { useModal } from '@context/modalContext'
-import PageTexts from '@enums/pageTexts'
 import { type Posts } from '@interfaces/interfaces'
-import {
-  Button,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  TextField,
-} from '@mui/material'
 import { createPost } from '@utils/utils'
+import NewPostForm from '@/components/NewPostForm'
 
 export const usePostCreate = (
   userId: string
@@ -86,40 +79,7 @@ export const usePostCreate = (
     event.stopPropagation()
     setModal({
       isOpen: true,
-      content: (
-        <>
-          <DialogTitle>{PageTexts.ADD_MODAL_TITLE}</DialogTitle>
-          <DialogContent sx={{ width: '500px' }}>
-            <form onSubmit={handleSubmit}>
-              <TextField
-                autoFocus
-                margin="dense"
-                id="title"
-                label="Title"
-                type="text"
-                fullWidth
-              />
-              <TextField
-                autoFocus
-                margin="dense"
-                id="content"
-                label="Content"
-                multiline
-                rows={4}
-                fullWidth
-              />
-              <DialogActions>
-                <Button onClick={handleClose} type="button">
-                  {PageTexts.CANCEL}
-                </Button>
-                <Button type="submit" variant="contained">
-                  {PageTexts.ADD}
-                </Button>
-              </DialogActions>
-            </form>
-          </DialogContent>
-        </>
-      ),
+      content: <NewPostForm handleSubmit={handleSubmit} />,
     })
   }
 
