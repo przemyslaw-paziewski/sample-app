@@ -55,10 +55,14 @@ export const usePostDelete = (
         }
       },
 
-      // Normalnie dodatkowo ponownie bym zfetchował to query po ununięciu lub errorze, ale tutaj, poniewaz api jest testowe, a usunięcie jest tylko symylucaję komentuję to.
-      // onSettled: () => {
-      //   void queryClient.invalidateQueries("usersPosts")
-      // },
+      // Normally, after a successful mutation or an error, I would refetch the data for the "usersPosts" query.
+      // However, because this is a test API and the deletion is only simulated, I am commenting this out.
+      //
+      // If this was a production application and the deletion was permanent, I would call the following function:
+      //
+      // void queryClient.invalidateQueries("usersPosts")
+      //
+      // This would invalidate the cached data for the "usersPosts" query, so that the next time the query is run, it would refetch the latest data from the server.
     }
   )
 
