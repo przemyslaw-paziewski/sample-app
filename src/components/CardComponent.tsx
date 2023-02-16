@@ -1,9 +1,9 @@
 import Link from "next/link"
 import { Card, CardContent, Typography } from "@mui/material"
 import { type User } from "@/interfaces/interfaces"
-import { enums } from "@constants/enums"
-import { links } from "@/constants/links"
 import { cardStyles, dataContainerStyles } from "@/styles/styles"
+import PageTexts from "@/enums/pageTexts"
+import Links from "@/enums/links"
 
 export default function CardComponent({
   id,
@@ -15,7 +15,7 @@ export default function CardComponent({
 }: User): JSX.Element {
   return (
     <Link
-      href={`${links.USER_PAGE}/${id}`}
+      href={`${Links.USER_PAGE}/${id}`}
       key={id}
       style={{ textDecoration: "none" }}
     >
@@ -29,7 +29,7 @@ export default function CardComponent({
             <span>{phone}</span>
             <span>{website}</span>
             <Typography sx={{ fontSize: 20 }} variant="body1" component="span">
-              {enums.COMPANY_DATA_TITLE}
+              {PageTexts.COMPANY_DATA_TITLE}
             </Typography>
             <span>{company.name}</span>
             <span>{company.catchPhrase}</span>

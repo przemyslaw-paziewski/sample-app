@@ -1,4 +1,4 @@
-import { enums } from "@/constants/enums"
+import PageTexts from "@/enums/pageTexts"
 import { arrayHelper, fetchComments } from "@/utils/utils"
 import { Button, Card, CardContent, Skeleton, Typography } from "@mui/material"
 import { Box } from "@mui/system"
@@ -18,7 +18,7 @@ export const Comments = ({ postId }: { postId: string }): JSX.Element => {
   return (
     <>
       <Button variant="contained" onClick={toggleComments}>
-        {enums.SHOW_COMMENTS_BUTTON}
+        {PageTexts.SHOW_COMMENTS_BUTTON}
       </Button>
       {areCommentsToggled &&
         (isFetchingComments

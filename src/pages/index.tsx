@@ -1,5 +1,5 @@
 import { Container } from "@mui/system"
-import { enums } from "@constants/enums"
+import PageTexts from "@/enums/pageTexts"
 import CardComponent from "@components/CardComponent"
 import { Skeleton } from "@mui/material"
 import PageWrapper from "@/components/PageWrapper"
@@ -15,8 +15,8 @@ export default function Home(): JSX.Element {
 
   return (
     <PageWrapper
-      metaTitle={enums.HOME_PAGE_TITLE}
-      metaDescription={enums.HOME_PAGE_TITLE}
+      metaTitle={PageTexts.HOME_PAGE_TITLE}
+      metaDescription={PageTexts.HOME_PAGE_TITLE}
     >
       <Container sx={containerStyles} maxWidth="xl">
         {isFetchingUsers

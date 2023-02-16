@@ -1,12 +1,12 @@
 import PageWrapper from "@components/PageWrapper"
-import { enums } from "@constants/enums"
 import { Container, Typography } from "@mui/material"
 import { fetchSinglePost, fetchSingleUser } from "@utils/utils"
 import { type GetServerSideProps } from "next"
 import { dehydrate, QueryClient, useQuery } from "react-query"
 import ArrowBackIcon from "@mui/icons-material/ArrowBack"
 import Link from "next/link"
-import { links } from "@constants/links"
+import Links from "@/enums/links"
+import PageTexts from "@/enums/pageTexts"
 import { Comments } from "@/components/Comments"
 import { postsListStyle } from "@/styles/styles"
 
@@ -29,10 +29,10 @@ export default function PostDetailed({
 
   return (
     <PageWrapper
-      metaTitle={`${enums.POST_PAGE_META_TITLE} ${
+      metaTitle={`${PageTexts.POST_PAGE_META_TITLE} ${
         singlePostData?.title as string
       }`}
-      metaDescription={enums.USER_PAGE_DESCRIPTION}
+      metaDescription={PageTexts.USER_PAGE_DESCRIPTION}
     >
       <Container
         maxWidth="xl"
@@ -44,7 +44,7 @@ export default function PostDetailed({
         }}
       >
         <Link
-          href={`/${links.USER_PAGE}/${userId}`}
+          href={`/${Links.USER_PAGE}/${userId}`}
           style={{ color: "#1976d2", marginRight: "auto" }}
         >
           <ArrowBackIcon fontSize="large" />

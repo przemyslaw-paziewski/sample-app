@@ -1,4 +1,4 @@
-import { enums } from "@/constants/enums"
+import PageTexts from "@/enums/pageTexts"
 import { useModal } from "@/context/modalContext"
 import { type Posts } from "@/interfaces/interfaces"
 import { deletePost } from "@/utils/utils"
@@ -71,12 +71,14 @@ export const usePostDelete = (
         isOpen: true,
         content: (
           <>
-            <DialogTitle>{enums.REMOVE_MODAL_TITLE}</DialogTitle>
+            <DialogTitle>{PageTexts.REMOVE_MODAL_TITLE}</DialogTitle>
             <DialogContent>
-              <DialogContentText>{enums.REMOVE_MODAL_TEXT}</DialogContentText>
+              <DialogContentText>
+                {PageTexts.REMOVE_MODAL_TEXT}
+              </DialogContentText>
             </DialogContent>
             <DialogActions>
-              <Button onClick={handleClose}>{enums.CANCEL}</Button>
+              <Button onClick={handleClose}>{PageTexts.CANCEL}</Button>
               <Button
                 onClick={() => {
                   removePostMutation.mutate(postId)
@@ -84,7 +86,7 @@ export const usePostDelete = (
                 }}
                 variant="contained"
               >
-                {enums.REMOVE}
+                {PageTexts.REMOVE}
               </Button>
             </DialogActions>
           </>

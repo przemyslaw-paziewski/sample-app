@@ -1,4 +1,4 @@
-import { enums } from "@/constants/enums"
+import PageTexts from "@/enums/pageTexts"
 import { useModal } from "@/context/modalContext"
 import { type Posts } from "@/interfaces/interfaces"
 import { createPost } from "@/utils/utils"
@@ -84,7 +84,7 @@ export const usePostCreate = (
       isOpen: true,
       content: (
         <>
-          <DialogTitle>{enums.ADD_MODAL_TITLE}</DialogTitle>
+          <DialogTitle>{PageTexts.ADD_MODAL_TITLE}</DialogTitle>
           <DialogContent sx={{ width: "500px" }}>
             <form onSubmit={handleSubmit}>
               <TextField
@@ -106,10 +106,10 @@ export const usePostCreate = (
               />
               <DialogActions>
                 <Button onClick={handleClose} type="button">
-                  {enums.CANCEL}
+                  {PageTexts.CANCEL}
                 </Button>
                 <Button type="submit" variant="contained">
-                  {enums.ADD}
+                  {PageTexts.ADD}
                 </Button>
               </DialogActions>
             </form>
