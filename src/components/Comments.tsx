@@ -1,6 +1,7 @@
 import { enums } from "@/constants/enums"
 import { arrayHelper, fetchComments } from "@/utils/utils"
 import { Button, Card, CardContent, Skeleton, Typography } from "@mui/material"
+import { Box } from "@mui/system"
 import { useReducer } from "react"
 import { useQuery } from "react-query"
 
@@ -29,12 +30,21 @@ export const Comments = ({ postId }: { postId: string }): JSX.Element => {
                 key={el}
               />
             ))
-          : comments?.map(({ id, email, body }) => (
+          : comments?.map(({ id, email, body, name }) => (
               <Card key={id}>
-                <CardContent sx={{ display: "flex" }}>
-                  <Typography variant="body1" sx={{ flex: "0 0 300px" }}>
-                    {email}
-                  </Typography>
+                <CardContent
+                  sx={{ display: "flex", flexDirection: "column", gap: "15px" }}
+                >
+                  <Box
+                    sx={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      gap: "15px",
+                    }}
+                  >
+                    <Typography variant="body1">{name}</Typography>
+                    <Typography variant="body1">{email}</Typography>
+                  </Box>
                   <Typography variant="body1">{body}</Typography>
                 </CardContent>
               </Card>
