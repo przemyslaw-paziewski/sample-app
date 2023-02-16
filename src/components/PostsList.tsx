@@ -19,12 +19,7 @@ export default function PostsList({ id }: { id: string }): JSX.Element {
     <Container maxWidth="xl" sx={postsListStyle}>
       {isFetchingPosts
         ? skeletonsMockArray.map((el) => (
-            <Skeleton
-              variant="rectangular"
-              width={'100'}
-              height={'100'}
-              key={el}
-            />
+            <Skeleton variant="rectangular" width="100" height="100" key={el} />
           ))
         : usersPosts?.map(({ id: postId, title }) => (
             <Link
