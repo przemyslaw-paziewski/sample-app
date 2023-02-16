@@ -4,24 +4,7 @@ import { enums } from "@constants/enums"
 import CardComponent from "@components/CardComponent"
 import { Skeleton } from "@mui/material"
 import PageWrapper from "@/components/PageWrapper"
-
-const containerStyles = {
-  display: "grid",
-  gridTemplateColumns: "1fr",
-  gap: "30px",
-  flexDirection: "column",
-  padding: "30px 0",
-  alignItems: "center",
-  minHeight: "100vh",
-
-  "@media(min-width: 700px)": {
-    gridTemplateColumns: "1fr 1fr",
-  },
-
-  "@media(min-width: 1300px)": {
-    gridTemplateColumns: "repeat(4, 1fr)",
-  },
-}
+import { containerStyles } from "@/styles/styles"
 const arrayHelper = Array.from(Array(8).keys())
 
 export default function Home(): JSX.Element {

@@ -1,9 +1,15 @@
 import PageWrapper from "@components/PageWrapper"
 import { enums } from "@constants/enums"
 import { useSingleUser } from "@hooks/useSingleUser"
+import { Container, Typography } from "@mui/material"
 import { fetchSingleUser, fetchUsers } from "@utils/usersUtils"
 import { type GetStaticPaths, type GetStaticProps } from "next"
 import { dehydrate, QueryClient } from "react-query"
+import ArrowBackIcon from "@mui/icons-material/ArrowBack"
+import Link from "next/link"
+import { links } from "@constants/links"
+import AddIcon from "@mui/icons-material/Add"
+import { topContainerStyles } from "@/styles/styles"
 
 export default function UserDetails({ id }: { id: string }): JSX.Element {
   const { singleUserData } = useSingleUser(id)
@@ -13,7 +19,15 @@ export default function UserDetails({ id }: { id: string }): JSX.Element {
       metaTitle={`${enums.USER_PAGE_TITLE} ${singleUserData?.name as string}`}
       metaDescription={enums.USER_PAGE_DESCRIPTION}
     >
-      <p>test</p>
+      <Container maxWidth="xl" sx={topContainerStyles}>
+        <Link href={links.HOME}>
+          <ArrowBackIcon fontSize="large" />
+        </Link>
+        <Typography variant="h2" align="center">
+          {singleUserData?.name}
+        </Typography>
+        <AddIcon fontSize="large" />
+      </Container>
     </PageWrapper>
   )
 }
