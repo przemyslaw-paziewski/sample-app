@@ -22,10 +22,11 @@ const containerStyles = {
     gridTemplateColumns: "repeat(4, 1fr)",
   },
 }
+const arrayHelper = Array.from(Array(8).keys())
 
 export default function Home(): JSX.Element {
   const { data, isLoading } = useUsers()
-  const arrayHelper = new Array(8).fill(undefined)
+
   return (
     <>
       <Head>
