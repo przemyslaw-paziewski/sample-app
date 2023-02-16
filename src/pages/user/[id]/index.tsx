@@ -45,13 +45,11 @@ export default function UserDetailed({ id }: { id: string }): JSX.Element {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const users = await fetchUsers()
-  const paths = users.map((el) => {
-    return {
-      params: {
-        id: el.id.toString(),
-      },
-    }
-  })
+  const paths = users.map((el) => ({
+    params: {
+      id: el.id.toString(),
+    },
+  }))
 
   return {
     paths,
