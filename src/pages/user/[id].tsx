@@ -1,12 +1,21 @@
-import { useSingleUser } from "@/hooks/useSingleUser"
-import { fetchSingleUser, fetchUsers } from "@/utils/usersUtils"
+import PageWrapper from "@components/PageWrapper"
+import { enums } from "@constants/enums"
+import { useSingleUser } from "@hooks/useSingleUser"
+import { fetchSingleUser, fetchUsers } from "@utils/usersUtils"
 import { type GetStaticPaths, type GetStaticProps } from "next"
 import { dehydrate, QueryClient } from "react-query"
 
 export default function UserDetails({ id }: { id: string }): JSX.Element {
   const { singleUserData } = useSingleUser(id)
   console.log(singleUserData)
-  return <div>test</div>
+  return (
+    <PageWrapper
+      metaTitle={`${enums.USER_PAGE_TITLE} ${singleUserData?.name as string}`}
+      metaDescription={enums.USER_PAGE_DESCRIPTION}
+    >
+      <p>test</p>
+    </PageWrapper>
+  )
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -32,6 +41,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     queryKey: ["singleUser", id],
     queryFn: async () => await fetchSingleUser(id as string),
   })
+  console.log("test")
 
   return {
     props: {
