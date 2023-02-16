@@ -1,7 +1,26 @@
-import { createContext, useContext, useState } from 'react'
+import {
+  createContext,
+  type Dispatch,
+  type SetStateAction,
+  useContext,
+  useState,
+} from 'react'
 import Dialog from '@mui/material/Dialog'
 
-export const ModalContext = createContext<any>(null)
+interface ModalContextInterface {
+  setModal: Dispatch<
+    SetStateAction<{
+      isOpen: boolean
+      content: JSX.Element | undefined
+    }>
+  >
+  handleClose: () => void
+}
+
+export const ModalContext = createContext<ModalContextInterface>({
+  setModal: () => {},
+  handleClose: () => {},
+})
 
 export const ModalContextProvider = ({
   children,
@@ -30,9 +49,8 @@ export const ModalContextProvider = ({
       >
         {modal.content}
       </Dialog>
-      ,
     </ModalContext.Provider>
   )
 }
 
-export const useModal = (): any => useContext(ModalContext)
+export const useModal = (): ModalContextInterface => useContext(ModalContext)
