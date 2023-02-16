@@ -3,6 +3,7 @@ import { Card, CardContent, Typography } from "@mui/material"
 import { type User } from "@/interfaces/interfaces"
 import { enums } from "@constants/enums"
 import { links } from "@/constants/links"
+import { cardStyles, dataContainerStyles } from "@/styles/styles"
 
 export default function CardComponent({
   id,
@@ -12,21 +13,6 @@ export default function CardComponent({
   website,
   company,
 }: User): JSX.Element {
-  const dataContainerStyles = {
-    fontSize: 15,
-    display: "flex",
-    flexDirection: "column",
-    gap: "15px",
-  }
-
-  const cardStyles = {
-    "@media(min-width:700px)": {
-      "&:hover": {
-        boxShadow: "5px 5px 10px #888888",
-      },
-    },
-  }
-
   return (
     <Link
       href={`${links.USER_PAGE}/${id}`}

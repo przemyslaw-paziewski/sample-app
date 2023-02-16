@@ -6,8 +6,6 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
-  List,
-  ListItem,
   TextField,
   Typography,
 } from "@mui/material"
@@ -20,6 +18,7 @@ import { links } from "@constants/links"
 import AddIcon from "@mui/icons-material/Add"
 import { topContainerStyles } from "@/styles/styles"
 import { useModal } from "@/context/modalContext"
+import PostsList from "@/components/PostsList"
 
 export default function UserDetails({ id }: { id: string }): JSX.Element {
   const { setModal, handleClose } = useModal()
@@ -81,12 +80,7 @@ export default function UserDetails({ id }: { id: string }): JSX.Element {
           <AddIcon fontSize="large" />
         </Button>
       </Container>
-      <Container maxWidth="xl">
-        <List>
-          <ListItem>Test</ListItem>
-          <ListItem>Test</ListItem>
-        </List>
-      </Container>
+      <PostsList id={id} />
     </PageWrapper>
   )
 }
