@@ -12,7 +12,9 @@ import {
 import { type BaseSyntheticEvent } from "react"
 import { useMutation, useQueryClient } from "react-query"
 
-export const usePostDelete = (): {
+export const usePostDelete = (
+  userId: string
+): {
   handleDelete: (postId: string) => (event: Event | BaseSyntheticEvent) => void
 } => {
   const { setModal, handleClose } = useModal()
@@ -23,33 +25,38 @@ export const usePostDelete = (): {
     },
     {
       onMutate: async (postId: string) => {
-        await queryClient.cancelQueries("usersPosts")
-        const previousPosts = queryClient.getQueryData<Posts[]>("usersPosts")
-
+        await queryClient.cancelQueries(["usersPosts", userId])
+        const previousPosts = queryClient.getQueryData<Posts[]>([
+          "usersPosts",
+          userId,
+        ])
         if (previousPosts != null) {
+          console.log("test")
           const filteredPosts = [...previousPosts].filter(
-            (el) => el.id.toString() === postId
+            (el) => el.id.toString() !== postId
           )
-          queryClient.setQueryData<Posts[]>("usersPosts", filteredPosts)
+          queryClient.setQueryData<Posts[]>(
+            ["usersPosts", userId],
+            filteredPosts
+          )
         }
 
         return { previousPosts }
       },
 
       onError: (_err, variables, context) => {
-        console.log("Something went wrong")
         if (context?.previousPosts != null) {
-          queryClient.setQueryData<Posts[]>("usersPosts", context.previousPosts)
+          queryClient.setQueryData<Posts[]>(
+            ["usersPosts", userId],
+            context.previousPosts
+          )
         }
       },
 
-      onSuccess: () => {
-        console.log("Deleted posts")
-      },
-
-      onSettled: () => {
-        void queryClient.invalidateQueries("usersPosts")
-      },
+      // Normalnie dodatkowo ponownie bym zfetchował to query po ununięciu lub errorze, ale tutaj, poniewaz api jest testowe, a usunięcie jest tylko symylucaję komentuję to.
+      // onSettled: () => {
+      //   void queryClient.invalidateQueries("usersPosts")
+      // },
     }
   )
 

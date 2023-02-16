@@ -12,7 +12,7 @@ export default function PostsList({ id }: { id: string }): JSX.Element {
     queryKey: ["usersPosts", id],
     queryFn: async () => await fetchUsersPosts(id),
   })
-  const { handleDelete } = usePostDelete()
+  const { handleDelete } = usePostDelete(id)
 
   return (
     <Container maxWidth="xl" sx={postsListStyle}>
