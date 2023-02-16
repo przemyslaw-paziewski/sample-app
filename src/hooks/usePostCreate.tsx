@@ -7,6 +7,7 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
+  FormControl,
   TextField,
 } from "@mui/material"
 import { type BaseSyntheticEvent } from "react"
@@ -82,25 +83,27 @@ export const usePostCreate = (
         isOpen: true,
         content: (
           <>
-            <DialogTitle>{enums.REMOVE_MODAL_TITLE}</DialogTitle>
-            <DialogContent>
-              <TextField
-                autoFocus
-                margin="dense"
-                id="title"
-                label="Title"
-                type="text"
-                fullWidth
-              />
-              <TextField
-                autoFocus
-                margin="dense"
-                id="content"
-                label="Content"
-                multiline
-                rows={4}
-                fullWidth
-              />
+            <DialogTitle>{enums.ADD_MODAL_TITLE}</DialogTitle>
+            <DialogContent sx={{ width: "500px" }}>
+              <FormControl fullWidth>
+                <TextField
+                  autoFocus
+                  margin="dense"
+                  id="title"
+                  label="Title"
+                  type="text"
+                  fullWidth
+                />
+                <TextField
+                  autoFocus
+                  margin="dense"
+                  id="content"
+                  label="Content"
+                  multiline
+                  rows={4}
+                  fullWidth
+                />
+              </FormControl>
             </DialogContent>
             <DialogActions>
               <Button onClick={handleClose}>{enums.CANCEL}</Button>
@@ -111,7 +114,7 @@ export const usePostCreate = (
                 }}
                 variant="contained"
               >
-                {enums.REMOVE}
+                {enums.ADD}
               </Button>
             </DialogActions>
           </>

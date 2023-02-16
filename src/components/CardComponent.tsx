@@ -28,7 +28,7 @@ export default function CardComponent({
             <span>{username}</span>
             <span>{phone}</span>
             <span>{website}</span>
-            <Typography sx={{ fontSize: 20 }} variant="body1">
+            <Typography sx={{ fontSize: 20 }} variant="body1" component="span">
               {enums.COMPANY_DATA_TITLE}
             </Typography>
             <span>{company.name}</span>
