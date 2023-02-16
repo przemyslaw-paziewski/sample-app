@@ -1,9 +1,9 @@
-import Link from "next/link"
-import { Card, CardContent, Typography } from "@mui/material"
-import { type User } from "@/interfaces/interfaces"
-import { cardStyles, dataContainerStyles } from "@/styles/styles"
-import PageTexts from "@/enums/pageTexts"
-import Links from "@/enums/links"
+import Links from '@enums/links'
+import PageTexts from '@enums/pageTexts'
+import { type User } from '@interfaces/interfaces'
+import { Card, CardContent, Typography } from '@mui/material'
+import { cardStyles, dataContainerStyles } from '@styles/styles'
+import Link from 'next/link'
 
 export default function CardComponent({
   id,
@@ -17,7 +17,7 @@ export default function CardComponent({
     <Link
       href={`${Links.USER_PAGE}/${id}`}
       key={id}
-      style={{ textDecoration: "none" }}
+      style={{ textDecoration: 'none' }}
     >
       <Card sx={cardStyles}>
         <CardContent>

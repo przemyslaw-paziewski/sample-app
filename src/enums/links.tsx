@@ -1,6 +1,6 @@
 enum Links {
-  USER_PAGE = "user",
-  HOME = "/",
+  USER_PAGE = 'user',
+  HOME = '/',
 }
 
 export default Links

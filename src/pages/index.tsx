@@ -1,15 +1,15 @@
-import { Container } from "@mui/system"
-import PageTexts from "@/enums/pageTexts"
-import CardComponent from "@components/CardComponent"
-import { Skeleton } from "@mui/material"
-import PageWrapper from "@/components/PageWrapper"
-import { containerStyles } from "@/styles/styles"
-import { arrayHelper, fetchUsers } from "@/utils/utils"
-import { useQuery } from "react-query"
+import { useQuery } from 'react-query'
+import CardComponent from '@components/CardComponent'
+import PageWrapper from '@components/PageWrapper'
+import PageTexts from '@enums/pageTexts'
+import { Skeleton } from '@mui/material'
+import { Container } from '@mui/system'
+import { containerStyles } from '@styles/styles'
+import { arrayHelper, fetchUsers } from '@utils/utils'
 
 export default function Home(): JSX.Element {
   const { data: usersData, isLoading: isFetchingUsers } = useQuery({
-    queryKey: ["users"],
+    queryKey: ['users'],
     queryFn: async () => await fetchUsers(),
   })
 
@@ -23,8 +23,8 @@ export default function Home(): JSX.Element {
           ? arrayHelper.map((el) => (
               <Skeleton
                 variant="rectangular"
-                width={"100%"}
-                height={"100%"}
+                width={'100%'}
+                height={'100%'}
                 key={el}
               />
             ))

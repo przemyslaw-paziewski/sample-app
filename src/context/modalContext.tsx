@@ -1,5 +1,5 @@
-import { createContext, useContext, useState } from "react"
-import Dialog from "@mui/material/Dialog"
+import { createContext, useContext, useState } from 'react'
+import Dialog from '@mui/material/Dialog'
 
 export const ModalContext = createContext<any>(null)
 

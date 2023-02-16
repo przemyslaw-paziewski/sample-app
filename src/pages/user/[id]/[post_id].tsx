@@ -1,14 +1,14 @@
-import PageWrapper from "@components/PageWrapper"
-import { Container, Typography } from "@mui/material"
-import { fetchSinglePost, fetchSingleUser } from "@utils/utils"
-import { type GetServerSideProps } from "next"
-import { dehydrate, QueryClient, useQuery } from "react-query"
-import ArrowBackIcon from "@mui/icons-material/ArrowBack"
-import Link from "next/link"
-import Links from "@/enums/links"
-import PageTexts from "@/enums/pageTexts"
-import { Comments } from "@/components/Comments"
-import { postsListStyle } from "@/styles/styles"
+import { dehydrate, QueryClient, useQuery } from 'react-query'
+import { Comments } from '@components/Comments'
+import PageWrapper from '@components/PageWrapper'
+import Links from '@enums/links'
+import PageTexts from '@enums/pageTexts'
+import ArrowBackIcon from '@mui/icons-material/ArrowBack'
+import { Container, Typography } from '@mui/material'
+import { postsListStyle } from '@styles/styles'
+import { fetchSinglePost, fetchSingleUser } from '@utils/utils'
+import { type GetServerSideProps } from 'next'
+import Link from 'next/link'
 
 export default function PostDetailed({
   userId,
@@ -18,12 +18,12 @@ export default function PostDetailed({
   postId: string
 }): JSX.Element {
   const { data: singleUserData } = useQuery({
-    queryKey: ["singleUser", userId],
+    queryKey: ['singleUser', userId],
     queryFn: async () => await fetchSingleUser(userId),
   })
 
   const { data: singlePostData } = useQuery({
-    queryKey: ["singlePost", postId],
+    queryKey: ['singlePost', postId],
     queryFn: async () => await fetchSinglePost(postId),
   })
 
@@ -37,19 +37,19 @@ export default function PostDetailed({
       <Container
         maxWidth="xl"
         sx={{
-          display: "flex",
-          justifyContent: "center",
-          padding: "30px",
-          alignItems: "center",
+          display: 'flex',
+          justifyContent: 'center',
+          padding: '30px',
+          alignItems: 'center',
         }}
       >
         <Link
           href={`/${Links.USER_PAGE}/${userId}`}
-          style={{ color: "#1976d2", marginRight: "auto" }}
+          style={{ color: '#1976d2', marginRight: 'auto' }}
         >
           <ArrowBackIcon fontSize="large" />
         </Link>
-        <Typography variant="h2" align="center" sx={{ marginRight: "auto" }}>
+        <Typography variant="h2" align="center" sx={{ marginRight: 'auto' }}>
           {singleUserData?.name}
         </Typography>
       </Container>
@@ -73,12 +73,12 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const postId = context?.params?.post_id
   const queryClient = new QueryClient()
   await queryClient.prefetchQuery({
-    queryKey: ["singleUser", userId],
+    queryKey: ['singleUser', userId],
     queryFn: async () => await fetchSingleUser(userId as string),
   })
 
   await queryClient.prefetchQuery({
-    queryKey: ["singlePost", postId],
+    queryKey: ['singlePost', postId],
     queryFn: async () => await fetchSinglePost(postId as string),
   })
 

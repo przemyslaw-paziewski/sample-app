@@ -1,22 +1,22 @@
-import PageWrapper from "@components/PageWrapper"
-import { Button, Container, Typography } from "@mui/material"
-import { fetchSingleUser, fetchUsers } from "@utils/utils"
-import { type GetStaticPaths, type GetStaticProps } from "next"
-import { dehydrate, QueryClient, useQuery } from "react-query"
-import ArrowBackIcon from "@mui/icons-material/ArrowBack"
-import Link from "next/link"
-import Links from "@/enums/links"
-import PageTexts from "@/enums/pageTexts"
-import AddIcon from "@mui/icons-material/Add"
-import { topContainerStyles } from "@/styles/styles"
-import PostsList from "@/components/PostsList"
-import { usePostCreate } from "@/hooks/usePostCreate"
+import { dehydrate, QueryClient, useQuery } from 'react-query'
+import PageWrapper from '@components/PageWrapper'
+import PostsList from '@components/PostsList'
+import Links from '@enums/links'
+import PageTexts from '@enums/pageTexts'
+import { usePostCreate } from '@hooks/usePostCreate'
+import AddIcon from '@mui/icons-material/Add'
+import ArrowBackIcon from '@mui/icons-material/ArrowBack'
+import { Button, Container, Typography } from '@mui/material'
+import { topContainerStyles } from '@styles/styles'
+import { fetchSingleUser, fetchUsers } from '@utils/utils'
+import { type GetStaticPaths, type GetStaticProps } from 'next'
+import Link from 'next/link'
 
 export default function UserDetailed({ id }: { id: string }): JSX.Element {
   const { handlePostCreate } = usePostCreate(id)
 
   const { data: singleUserData } = useQuery({
-    queryKey: ["singleUser", id],
+    queryKey: ['singleUser', id],
     queryFn: async () => await fetchSingleUser(id),
   })
 
@@ -28,7 +28,7 @@ export default function UserDetailed({ id }: { id: string }): JSX.Element {
       metaDescription={PageTexts.USER_PAGE_DESCRIPTION}
     >
       <Container maxWidth="xl" sx={topContainerStyles}>
-        <Link href={Links.HOME} style={{ color: "#1976d2" }}>
+        <Link href={Links.HOME} style={{ color: '#1976d2' }}>
           <ArrowBackIcon fontSize="large" />
         </Link>
         <Typography variant="h2" align="center">
@@ -63,7 +63,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const id = context?.params?.id
   const queryClient = new QueryClient()
   await queryClient.prefetchQuery({
-    queryKey: ["singleUser", id],
+    queryKey: ['singleUser', id],
     queryFn: async () => await fetchSingleUser(id as string),
   })
 

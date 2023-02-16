@@ -1,5 +1,5 @@
-import { type PageWrapperProps } from "@/interfaces/interfaces"
-import Head from "next/head"
+import { type PageWrapperProps } from '@interfaces/interfaces'
+import Head from 'next/head'
 
 export default function PageWrapper({
   metaTitle,

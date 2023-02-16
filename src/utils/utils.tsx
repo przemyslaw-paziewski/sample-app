@@ -1,17 +1,17 @@
-import { type Comment, type Posts, type User } from "@/interfaces/interfaces"
-import axios from "@utils/axiosInstance"
+import axios from '@utils/axiosInstance'
+import { type Comment, type Posts, type User } from '@/interfaces/interfaces'
 
 export const fetchUsers = async (): Promise<User[]> => {
   const res = await axios({
-    method: "get",
-    url: "users",
+    method: 'get',
+    url: 'users',
   })
   return res.data
 }
 
 export const fetchSingleUser = async (id: string): Promise<User> => {
   const res = await axios({
-    method: "get",
+    method: 'get',
     url: `users/${id}`,
   })
   return res.data
@@ -19,7 +19,7 @@ export const fetchSingleUser = async (id: string): Promise<User> => {
 
 export const fetchUsersPosts = async (id: string): Promise<Posts[]> => {
   const res = await axios({
-    method: "get",
+    method: 'get',
     url: `users/${id}/posts`,
   })
   return res.data
@@ -29,7 +29,7 @@ export const arrayHelper = Array.from(Array(8).keys())
 
 export const deletePost = async (postId: string): Promise<void> => {
   const res = await axios({
-    method: "delete",
+    method: 'delete',
     url: `posts/${postId}`,
   })
 
@@ -44,8 +44,8 @@ export const createPost = async (
   userId: number
 ): Promise<void> => {
   const res = await axios({
-    method: "post",
-    url: `posts`,
+    method: 'post',
+    url: 'posts',
     data: {
       title,
       content,
@@ -60,7 +60,7 @@ export const createPost = async (
 
 export const fetchSinglePost = async (postId: string): Promise<Posts> => {
   const res = await axios({
-    method: "get",
+    method: 'get',
     url: `posts/${postId}`,
   })
   return res.data
@@ -68,7 +68,7 @@ export const fetchSinglePost = async (postId: string): Promise<Posts> => {
 
 export const fetchComments = async (postId: string): Promise<Comment[]> => {
   const res = await axios({
-    method: "get",
+    method: 'get',
     url: `posts/${postId}/comments`,
   })
   return res.data

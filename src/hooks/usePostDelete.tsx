@@ -1,16 +1,16 @@
-import PageTexts from "@/enums/pageTexts"
-import { useModal } from "@/context/modalContext"
-import { type Posts } from "@/interfaces/interfaces"
-import { deletePost } from "@/utils/utils"
+import { type BaseSyntheticEvent } from 'react'
+import { useMutation, useQueryClient } from 'react-query'
+import { useModal } from '@context/modalContext'
+import PageTexts from '@enums/pageTexts'
+import { type Posts } from '@interfaces/interfaces'
 import {
   Button,
   DialogActions,
   DialogContent,
   DialogContentText,
   DialogTitle,
-} from "@mui/material"
-import { type BaseSyntheticEvent } from "react"
-import { useMutation, useQueryClient } from "react-query"
+} from '@mui/material'
+import { deletePost } from '@utils/utils'
 
 export const usePostDelete = (
   userId: string
@@ -25,9 +25,9 @@ export const usePostDelete = (
     },
     {
       onMutate: async (postId: string) => {
-        await queryClient.cancelQueries(["usersPosts", userId])
+        await queryClient.cancelQueries(['usersPosts', userId])
         const previousPosts = queryClient.getQueryData<Posts[]>([
-          "usersPosts",
+          'usersPosts',
           userId,
         ])
         if (previousPosts != null && previousPosts.length > 0) {
@@ -35,7 +35,7 @@ export const usePostDelete = (
             (el) => el.id.toString() !== postId
           )
           queryClient.setQueryData<Posts[]>(
-            ["usersPosts", userId],
+            ['usersPosts', userId],
             filteredPosts
           )
         }
@@ -49,7 +49,7 @@ export const usePostDelete = (
           context?.previousPosts.length > 0
         ) {
           queryClient.setQueryData<Posts[]>(
-            ["usersPosts", userId],
+            ['usersPosts', userId],
             context.previousPosts
           )
         }

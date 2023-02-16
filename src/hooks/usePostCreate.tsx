@@ -1,16 +1,16 @@
-import PageTexts from "@/enums/pageTexts"
-import { useModal } from "@/context/modalContext"
-import { type Posts } from "@/interfaces/interfaces"
-import { createPost } from "@/utils/utils"
+import { type BaseSyntheticEvent } from 'react'
+import { useMutation, useQueryClient } from 'react-query'
+import { useModal } from '@context/modalContext'
+import PageTexts from '@enums/pageTexts'
+import { type Posts } from '@interfaces/interfaces'
 import {
   Button,
   DialogActions,
   DialogContent,
   DialogTitle,
   TextField,
-} from "@mui/material"
-import { type BaseSyntheticEvent } from "react"
-import { useMutation, useQueryClient } from "react-query"
+} from '@mui/material'
+import { createPost } from '@utils/utils'
 
 export const usePostCreate = (
   userId: string
@@ -25,9 +25,9 @@ export const usePostCreate = (
     },
     {
       onMutate: async ([title, content]: [string, string]) => {
-        await queryClient.cancelQueries(["usersPosts", userId])
+        await queryClient.cancelQueries(['usersPosts', userId])
         const previousPosts = queryClient.getQueryData<Posts[]>([
-          "usersPosts",
+          'usersPosts',
           userId,
         ])
         if (previousPosts != null && previousPosts.length > 0) {
@@ -44,7 +44,7 @@ export const usePostCreate = (
           ] as Posts[]
 
           queryClient.setQueryData<Posts[]>(
-            ["usersPosts", userId],
+            ['usersPosts', userId],
             postsWithNewOne
           )
         }
@@ -58,7 +58,7 @@ export const usePostCreate = (
           context?.previousPosts.length > 0
         ) {
           queryClient.setQueryData<Posts[]>(
-            ["usersPosts", userId],
+            ['usersPosts', userId],
             context.previousPosts
           )
         }
@@ -85,7 +85,7 @@ export const usePostCreate = (
       content: (
         <>
           <DialogTitle>{PageTexts.ADD_MODAL_TITLE}</DialogTitle>
-          <DialogContent sx={{ width: "500px" }}>
+          <DialogContent sx={{ width: '500px' }}>
             <form onSubmit={handleSubmit}>
               <TextField
                 autoFocus
