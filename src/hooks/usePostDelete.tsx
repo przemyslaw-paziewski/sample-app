@@ -37,10 +37,14 @@ export const usePostDelete = (): {
       },
 
       onError: (_err, variables, context) => {
-        console.log(_err)
+        console.log("Something went wrong")
         if (context?.previousPosts != null) {
           queryClient.setQueryData<Posts[]>("usersPosts", context.previousPosts)
         }
+      },
+
+      onSuccess: () => {
+        console.log("Deleted posts")
       },
 
       onSettled: () => {
