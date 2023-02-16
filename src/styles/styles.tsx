@@ -42,6 +42,7 @@ export const postsListStyle = {
   display: "flex",
   flexDirection: "column",
   gap: "30px",
+  padding: "30px",
 }
 
 export const titleTrimStyles = {

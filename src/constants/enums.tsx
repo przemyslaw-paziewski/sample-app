@@ -10,4 +10,5 @@ export const enums = Object.freeze({
   ADD: "Add",
   ADD_MODAL_TITLE: "Add post",
   POST_PAGE_META_TITLE: "Post:",
+  SHOW_COMMENTS_BUTTON: "Show comments",
 })

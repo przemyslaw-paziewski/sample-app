@@ -7,6 +7,8 @@ import { dehydrate, QueryClient, useQuery } from "react-query"
 import ArrowBackIcon from "@mui/icons-material/ArrowBack"
 import Link from "next/link"
 import { links } from "@constants/links"
+import { Comments } from "@/components/Comments"
+import { postsListStyle } from "@/styles/styles"
 
 export default function PostDetailed({
   userId,
@@ -58,6 +60,9 @@ export default function PostDetailed({
         <Typography variant="body1" align="center">
           {singlePostData?.body}
         </Typography>
+      </Container>
+      <Container maxWidth="xl" sx={postsListStyle}>
+        <Comments postId={postId} />
       </Container>
     </PageWrapper>
   )

@@ -1,4 +1,4 @@
-import { type Posts, type User } from "@/interfaces/interfaces"
+import { type Comment, type Posts, type User } from "@/interfaces/interfaces"
 import axios from "@utils/axiosInstance"
 
 export const fetchUsers = async (): Promise<User[]> => {
@@ -58,10 +58,18 @@ export const createPost = async (
   }
 }
 
-export const fetchSinglePost = async (id: string): Promise<Posts> => {
+export const fetchSinglePost = async (postId: string): Promise<Posts> => {
   const res = await axios({
     method: "get",
-    url: `posts/${id}`,
+    url: `posts/${postId}`,
+  })
+  return res.data
+}
+
+export const fetchComments = async (postId: string): Promise<Comment[]> => {
+  const res = await axios({
+    method: "get",
+    url: `posts/${postId}/comments`,
   })
   return res.data
 }
