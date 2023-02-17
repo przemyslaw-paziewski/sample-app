@@ -1,11 +1,15 @@
 import Head from 'next/head'
-import { type PageWrapperProps } from '@/interfaces/interfaces'
+interface Props {
+  metaTitle: string
+  metaDescription: string
+  children: JSX.Element[] | JSX.Element
+}
 
 export default function PageWrapper({
   metaTitle,
   metaDescription,
   children,
-}: PageWrapperProps): JSX.Element {
+}: Props): JSX.Element {
   return (
     <>
       <Head>

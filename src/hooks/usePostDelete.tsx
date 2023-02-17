@@ -5,11 +5,11 @@ import { useModal } from '@/context/modalContext'
 import { type Posts } from '@/interfaces/interfaces'
 import { deletePost } from '@/utils/utils'
 
-export const usePostDelete = (
-  userId: string
-): {
+interface Props {
   handleDelete: (postId: string) => (event: Event | BaseSyntheticEvent) => void
-} => {
+}
+
+export const usePostDelete = (userId: string): Props => {
   const { setModal, handleClose } = useModal()
   const queryClient = useQueryClient()
   const removePostMutation = useMutation(

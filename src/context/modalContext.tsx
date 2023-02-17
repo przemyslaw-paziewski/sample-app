@@ -17,16 +17,16 @@ interface ModalContextInterface {
   handleClose: () => void
 }
 
+interface Props {
+  children: JSX.Element[]
+}
+
 export const ModalContext = createContext<ModalContextInterface>({
   setModal: () => {},
   handleClose: () => {},
 })
 
-export const ModalContextProvider = ({
-  children,
-}: {
-  children: JSX.Element[]
-}): JSX.Element => {
+export const ModalContextProvider = ({ children }: Props): JSX.Element => {
   const [modal, setModal] = useState<{
     isOpen: boolean
     content: JSX.Element | undefined

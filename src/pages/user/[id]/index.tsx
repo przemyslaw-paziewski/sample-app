@@ -12,7 +12,11 @@ import { usePostCreate } from '@/hooks/usePostCreate'
 import { topContainerStyles } from '@/styles/styles'
 import { fetchSingleUser, fetchUsers } from '@/utils/utils'
 
-export default function UserDetailed({ id }: { id: string }): JSX.Element {
+interface Props {
+  id: string
+}
+
+export default function UserDetailed({ id }: Props): JSX.Element {
   const { handlePostCreate } = usePostCreate(id)
 
   const { data: singleUserData } = useQuery({

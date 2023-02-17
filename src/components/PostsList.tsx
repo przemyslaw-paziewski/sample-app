@@ -8,7 +8,11 @@ import { usePostDelete } from '@/hooks/usePostDelete'
 import { cardStyles, postsListStyle, titleTrimStyles } from '@/styles/styles'
 import { skeletonsMockArray, fetchUsersPosts } from '@/utils/utils'
 
-export default function PostsList({ id }: { id: string }): JSX.Element {
+interface Props {
+  id: string
+}
+
+export default function PostsList({ id }: Props): JSX.Element {
   const { data: usersPosts, isLoading: isFetchingPosts } = useQuery({
     queryKey: ['usersPosts', id],
     queryFn: async () => await fetchUsersPosts(id),

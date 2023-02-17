@@ -5,11 +5,11 @@ import { useModal } from '@/context/modalContext'
 import { type Posts } from '@/interfaces/interfaces'
 import { createPost } from '@/utils/utils'
 
-export const usePostCreate = (
-  userId: string
-): {
+interface Props {
   handlePostCreate: (event: Event | BaseSyntheticEvent) => void
-} => {
+}
+
+export const usePostCreate = (userId: string): Props => {
   const { setModal, handleClose } = useModal()
   const queryClient = useQueryClient()
   const addPostMutation = useMutation(

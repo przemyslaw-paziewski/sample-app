@@ -10,13 +10,12 @@ import PageTexts from '@/enums/pageTexts'
 import { postsListStyle } from '@/styles/styles'
 import { fetchSinglePost, fetchSingleUser } from '@/utils/utils'
 
-export default function PostDetailed({
-  userId,
-  postId,
-}: {
+interface Props {
   userId: string
   postId: string
-}): JSX.Element {
+}
+
+export default function PostDetailed({ userId, postId }: Props): JSX.Element {
   const { data: singleUserData } = useQuery({
     queryKey: ['singleUser', userId],
     queryFn: async () => await fetchSingleUser(userId),
