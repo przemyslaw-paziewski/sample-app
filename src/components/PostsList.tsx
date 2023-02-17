@@ -32,7 +32,13 @@ export default function PostsList({ id }: Props): JSX.Element {
               style={{ textDecoration: 'none' }}
             >
               <Card sx={{ ...cardStyles, width: '100%' }}>
-                <CardContent sx={{ display: 'flex', justifyContent: 'center' }}>
+                <CardContent
+                  sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    gap: '15px',
+                  }}
+                >
                   <Button
                     onClick={handleDelete(postId.toString())}
                     variant="contained"

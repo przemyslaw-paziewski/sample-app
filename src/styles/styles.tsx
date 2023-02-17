@@ -10,7 +10,7 @@ export const containerStyles = {
   gridTemplateColumns: '1fr',
   gap: '30px',
   flexDirection: 'column',
-  padding: '30px 0',
+  padding: '30px',
   alignItems: 'center',
   minHeight: '100vh',
 

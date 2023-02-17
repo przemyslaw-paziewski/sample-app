@@ -18,7 +18,7 @@ export default function NewPostForm({ handleSubmit }: Props): JSX.Element {
   return (
     <>
       <DialogTitle>{PageTexts.ADD_MODAL_TITLE}</DialogTitle>
-      <DialogContent sx={{ width: '500px' }}>
+      <DialogContent sx={{ width: '500px', maxWidth: '100%' }}>
         <form onSubmit={handleSubmit}>
           <TextField
             autoFocus
